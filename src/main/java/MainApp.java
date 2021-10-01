@@ -50,7 +50,7 @@ public class MainApp {
 
                         String result;
                         if(cnt == 0)
-                            result = "zero? :thinking:";
+                            result = "zero? :thinking::sick:";
                         else
                             result = rainbow.rainbowArt(cnt);
 

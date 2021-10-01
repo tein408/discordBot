@@ -28,6 +28,17 @@ public class MainApp {
                         }
                     }
 
+                    if(message.getContent().startsWith("$rainbow ")) {
+                        String content = event.getMessage().getContent();
+                        int cnt = Integer.parseInt(content.split(" ")[1]);
+
+                        Rainbow rainbow = new Rainbow();
+                        String result = rainbow.printRainbow(cnt);
+
+                        return message.getChannel()
+                                .flatMap(channel -> channel.createMessage(result));
+                    }
+
                     return Mono.empty();
                 }));
 

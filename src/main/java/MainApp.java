@@ -28,13 +28,18 @@ public class MainApp {
                         }
                     }
 
+                    String content = event.getMessage().getContent();
+                    int cnt = Integer.parseInt(content.split(" ")[1]);
+                    Rainbow rainbow = new Rainbow();
+
                     if(message.getContent().startsWith("$rainbow ")) {
-                        String content = event.getMessage().getContent();
-                        int cnt = Integer.parseInt(content.split(" ")[1]);
-
-                        Rainbow rainbow = new Rainbow();
                         String result = rainbow.printRainbow(cnt);
+                        return message.getChannel()
+                                .flatMap(channel -> channel.createMessage(result));
+                    }
 
+                    if(message.getContent().startsWith("$rainbowArt ")) {
+                        String result = rainbow.rainbowArt(cnt);
                         return message.getChannel()
                                 .flatMap(channel -> channel.createMessage(result));
                     }

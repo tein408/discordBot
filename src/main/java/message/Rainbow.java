@@ -49,5 +49,46 @@ public class Rainbow {
         return sb.toString();
     }
 
+    public String rainbowArt(int cnt) {
+        divide = cnt/9;
+        mod = cnt%9;
+
+        if(divide > 8) {
+            divide = 8;
+            mod = 0;
+        }
+
+        Deque<String> deque = new ArrayDeque<>();
+        for(int i=0; i<9; i++) {
+            deque.addLast(arr[i]);
+        }
+
+        String temp = "";
+
+        if(divide > 0) {
+            String sum = "";
+            for(int j=0; j<divide; j++) {
+                for(int i=0; i<deque.size(); i++) {
+                    temp = deque.pollFirst();
+                    sb.append(temp);
+                    deque.addLast(temp);
+                }
+                temp = deque.pollFirst();
+                deque.addLast(temp);
+                sb.append("\n");
+            }
+        }
+        if(mod > 0) {
+            String modTemp = "";
+            for(int i=0; i<mod; i++) {
+                temp = deque.pollFirst();
+                modTemp += temp;
+                deque.addLast(temp);
+            }
+            sb.append(modTemp);
+        }
+
+        return sb.toString();
+    }
 
 }

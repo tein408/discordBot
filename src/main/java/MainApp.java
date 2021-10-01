@@ -28,18 +28,32 @@ public class MainApp {
                         }
                     }
 
-                    String content = event.getMessage().getContent();
-                    int cnt = Integer.parseInt(content.split(" ")[1]);
-                    Rainbow rainbow = new Rainbow();
-
                     if(message.getContent().startsWith("$rainbow ")) {
-                        String result = rainbow.printRainbow(cnt);
+                        String content = event.getMessage().getContent();
+                        int cnt = Integer.parseInt(content.split(" ")[1]);
+                        Rainbow rainbow = new Rainbow();
+
+                        String result;
+                        if(cnt == 0)
+                            result = "zero? :thinking:";
+                        else
+                            result = rainbow.printRainbow(cnt);
+
                         return message.getChannel()
                                 .flatMap(channel -> channel.createMessage(result));
                     }
 
                     if(message.getContent().startsWith("$rainbowArt ")) {
-                        String result = rainbow.rainbowArt(cnt);
+                        String content = event.getMessage().getContent();
+                        int cnt = Integer.parseInt(content.split(" ")[1]);
+                        Rainbow rainbow = new Rainbow();
+
+                        String result;
+                        if(cnt == 0)
+                            result = "zero? :thinking:";
+                        else
+                            result = rainbow.rainbowArt(cnt);
+
                         return message.getChannel()
                                 .flatMap(channel -> channel.createMessage(result));
                     }

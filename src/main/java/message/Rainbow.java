@@ -25,7 +25,7 @@ public class Rainbow {
         divide = cnt/9;
         mod = cnt%9;
 
-        if(divide > 8) {
+        if(cnt > 72) {
             divide = 8;
             mod = 0;
         }
@@ -53,7 +53,7 @@ public class Rainbow {
         divide = cnt/9;
         mod = cnt%9;
 
-        if(divide > 8) {
+        if(cnt > 72) {
             divide = 8;
             mod = 0;
         }
@@ -66,7 +66,6 @@ public class Rainbow {
         String temp = "";
 
         if(divide > 0) {
-            String sum = "";
             for(int j=0; j<divide; j++) {
                 for(int i=0; i<deque.size(); i++) {
                     temp = deque.pollFirst();
